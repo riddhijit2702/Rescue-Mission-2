@@ -1,5 +1,5 @@
 var helicopterIMG, helicopterSprite, packageSprite,packageIMG;
-var packageBody,ground
+var packageBody,ground,f1,f2,f3;
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
@@ -14,8 +14,14 @@ function preload()
 function setup() {
 	createCanvas(800, 700);
 	rectMode(CENTER);
-	
+	fi=createSprite(width/2,650,100,20)
+	fi.shapeColor="red"
 
+	fj=createSprite(width/2,650,20,100)
+	fj.shapeColor="red"
+
+	fm=createSprite(width/2,650,100,20)
+   
 	packageSprite=createSprite(width/2, 200, 10,10);
 	packageSprite.addImage(packageIMG)
 	packageSprite.scale=0.2
@@ -34,13 +40,17 @@ function setup() {
 
 	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0, isStatic:true});
 	World.add(world, packageBody);
-	
-
+	wall1=Bodies.rectangle(width/2,650,100,20,{isStatic:true})
+	World.add(world,wall1)
+	wall2=Bodies.rectangle(width/2,250,20,100,{isStatic:true})
+	World.add(world,wall2)
+    
 	//Create a Ground
 	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
  	World.add(world, ground);
 
-
+	 rect1=Bodies.rectangle(400,650,100,20,{isStatic:true})
+	 rect2=Bodies.rectangle(100,650,20,100,{isStatic:true})
 	Engine.run(engine);
    
 }
@@ -51,15 +61,15 @@ function draw() {
   
   background(0);
   rectMode(CENTER);
-  fill("red")
-  rect(400,650,200,20)
-  rect(280,600,20,140)
-  rect(520,600,20,140)
+  //fill("red")
+ 
+
   packageSprite.x= packageBody.position.x 
   packageSprite.y= packageBody.position.y 
  // keyPressed();
   drawSprites();
- 
+  text("X= "+mouseX/*+mouseY*/, 20,20);
+  text("Y= "+mouseY/*+mouseY*/, 20,60);
 }
 
 function keyPressed() {
@@ -69,6 +79,5 @@ function keyPressed() {
     
   }
 }
-
 
 
