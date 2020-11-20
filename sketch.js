@@ -17,11 +17,12 @@ function setup() {
 	fi=createSprite(width/2,650,100,20)
 	fi.shapeColor="red"
 
-	fj=createSprite(width/2,650,20,100)
-	fj.shapeColor="red"
-
-	fm=createSprite(width/2,650,100,20)
-   
+	walla=createSprite(width/2,650,100,20)
+	walla.shapeColor="red"
+	wallb=createSprite(350,610,20,100)
+	wallb.shapeColor="red"
+	wallc=createSprite(450,610,20,100)
+	wallc.shapeColor="red"
 	packageSprite=createSprite(width/2, 200, 10,10);
 	packageSprite.addImage(packageIMG)
 	packageSprite.scale=0.2
@@ -38,23 +39,27 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0, isStatic:true});
+	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0,friction:0, isStatic:true});
 	World.add(world, packageBody);
-	wall1=Bodies.rectangle(width/2,650,100,20,{isStatic:true})
+	/*wall1=Bodies.rectangle(width/2,610,100,20,{isStatic:true})
 	World.add(world,wall1)
-	wall2=Bodies.rectangle(width/2,250,20,100,{isStatic:true})
+	wall2=Bodies.rectangle(width/2,610,20,100,{isStatic:true})
 	World.add(world,wall2)
+	wall3=Bodies.rectangle(width/2,610,20,100,{isStatic:true})
+	World.add(world,wall3)*/
+	/*wall2=Bodies.rectangle(width/2,610,20,100,{isStatic:true})
+	World.add(world,wall2)*/
     
 	//Create a Ground
 	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
  	World.add(world, ground);
-
+   /* fill ("red")
 	 rect1=Bodies.rectangle(400,650,100,20,{isStatic:true})
-	 rect2=Bodies.rectangle(100,650,20,100,{isStatic:true})
+	 rect2=Bodies.rectangle(100,650,20,100,{isStatic:true})*/
 	Engine.run(engine);
    
 }
-
+                      
 
 function draw() {
 	
@@ -79,5 +84,7 @@ function keyPressed() {
     
   }
 }
+
+
 
 
